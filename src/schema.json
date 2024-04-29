@@ -1,0 +1,62 @@
+{
+  "registers": {
+    "named": [
+      {
+        "register": "X31",
+        "rules": [
+          {
+            "type": "value",
+            "val": 0,
+            "result": true
+          }
+        ]
+      },
+      {
+        "register": "X2",
+        "rules": [
+          {
+            "type": "value",
+            "val": 4,
+            "result": false
+          },
+          {
+            "type": "range",
+            "i_max": 6,
+            "e_min": 1,
+            "result": true
+          }
+        ]
+      }
+    ],
+    "unnamed": [
+      [
+        {
+          "type": "value",
+          "val": 8,
+          "result": true
+        }
+      ],
+      [
+        {
+          "type": "range",
+          "i_max": 10,
+          "i_min": 16,
+          "result": false
+        },
+        {
+          "type": "range",
+          "i_max": 6,
+          "e_min": 1,
+          "result": false
+        },
+        {
+          "type": "range",
+          "i_max": 200,
+          "i_min": 255,
+          "result": false
+        }
+      ]
+    ]
+  },
+  "data_mem": {}
+}
