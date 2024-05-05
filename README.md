@@ -115,7 +115,7 @@ print(cpu1)
 
 # Assert Testing
 assert(cpu2.get_reg_value('X5') == 5)  # X5 should have value 5
-assert(cpu2.get_double_word(56) == 15) # [96] should contain value 15
+assert(cpu2.get_double_word(56) == 15) # [56] should contain value 15
 
 ```
 
