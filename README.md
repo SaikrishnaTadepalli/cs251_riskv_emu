@@ -73,7 +73,8 @@ This is a basic ARM emulator written in Python. It emulates a simple ARM single 
 
 1. Clone the repository: `git clone [URL]`
 2. Navigate to the project directory: `cd src`
-3. Run the emulator: `./main.py`. (Probably will need to do `chmod u+x main.py` first)
+3. Run the emulator: `./main.py`. (Probably will need to do `chmod u+x main.py` first). This is a sample program.
+4. To run your own program, import the CPU class and follow the below examples.
 
 Basic Usage Example:
 
