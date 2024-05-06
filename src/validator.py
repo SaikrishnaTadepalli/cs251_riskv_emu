@@ -51,7 +51,7 @@ class ValidateARM():
             r'^\s*STUR\s+X([0-9]|1[0-9]|2[0-9]|30|31|ZR)\s*,*\s*\[\s*X([0-9]|1[0-9]|2[0-9]|30|31|ZR)\s*,*\s*#(-?\d+)\s*]\s*$': ValidateARM.validate_ldur_stur,
             r'^\s*CBNZ\s+X([0-9]|1[0-9]|2[0-9]|30|31|ZR)\s*,*\s*#(-?\d+)\s*$': ValidateARM.validate_cbnz_cbz,
             r'^\s*CBZ\s+X([0-9]|1[0-9]|2[0-9]|30|31|ZR)\s*,*\s*#(-?\d+)\s*$': ValidateARM.validate_cbnz_cbz,
-            r'^\s*B\s*,*\s*#(-?\d+)\s*$': ValidateARM.validate_b,
+            r'^\s*B\s*\s*#(-?\d+)\s*$': ValidateARM.validate_b,
             r'^\s*ADD\s+X([0-2]?[0-9]|30|31|ZR)\s*,*\s*X([0-2]?[0-9]|30|31|ZR)\s*,*\s*X([0-2]?[0-9]|30|31|ZR)\s*$': ValidateARM.validate_add,
             r'^\s*SUB\s+X([0-2]?[0-9]|30|31|ZR)\s*,*\s*X([0-2]?[0-9]|30|31|ZR)\s*,*\s*X([0-2]?[0-9]|30|31|ZR)\s*$': ValidateARM.validate_sub,
         }
