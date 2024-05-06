@@ -472,7 +472,7 @@ class CPU:
 
         def run_b_type() -> None:
             try:
-                IMM = args
+                IMM = args[0]
             except:
                 error_msg = f'''
                 Invalid args.
