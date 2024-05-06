@@ -26,6 +26,7 @@ class CPU:
 
         self.registers = [0] * 32
         self.data_mem = [0] * MEMSIZE
+        self.print_mode_hex = True
 
         if randomize: self.randomize_cpu()
         if reg_config != "": self.config_reg(reg_config)
