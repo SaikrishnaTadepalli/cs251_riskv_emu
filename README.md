@@ -1,4 +1,4 @@
-New Version in development here: https://github.com/SaikrishnaTadepalli/riskv_emu
+New version in development here: https://github.com/SaikrishnaTadepalli/riskv_emu
 
 Will include:
 - Expanded ISA
