@@ -58,6 +58,8 @@ int main() {
 
     cpu1.print_hex();
 
+    std::cout<< "\n\n" << (cpu1 == cpu1) << "\n\n";
+
     std::cout << "\n^^^=======================================^^^\n" << std::endl;
     return 0;
 }

@@ -1,5 +1,3 @@
-#include <cassert>
-
 #include "instr.hpp"
 #include "cpu.hpp"
 
@@ -11,14 +9,14 @@ CPU::CPU(std::string id, std::vector<std::string> code) {
     }
 }
 
-int64_t CPU::get_reg(int reg_index) {
+int64_t CPU::get_reg(int reg_index) const {
     assert(reg_index >= 0);
     assert(reg_index < 32);
 
     return this->registers[reg_index];
 }
 
-int64_t CPU::get_mem(int mem_index) {
+int64_t CPU::get_mem(int mem_index) const {
     assert(mem_index >= 0);
     assert(mem_index < MEMSIZE - 7);
     assert(mem_index % 8 == 0);
@@ -50,7 +48,6 @@ void CPU::set_mem(int mem_index, int64_t val) {
         this->data_mem[mem_index + i] = cur;
     }
 }
-
 
 std::string _formatted_hex(int64_t num) {
     std::stringstream ss;
@@ -108,5 +105,28 @@ void CPU::print_hex() {
 }
 
 void CPU::print_dec() {
-    
+    assert(false);
 }
+
+bool _reg_eq(const CPU &cpu1, const CPU &cpu2) {
+    for (int i = 0; i < 32; i++) {
+        if (cpu1.get_reg(i) != cpu2.get_reg(i)) { return false; }
+    }
+    return true;
+}
+
+bool _mem_eq(const CPU &cpu1, const CPU &cpu2) {
+    for (int i = 0; i < MEMSIZE; i+=8) {
+        if (cpu1.get_mem(i) != cpu2.get_mem(i)) { return false; }
+    }
+    return true;
+}
+
+bool CPU::operator==(const CPU& other) const {    
+    return _reg_eq(*this, other) && _mem_eq(*this, other);
+}
+
+bool CPU::operator!=(const CPU& other) const {
+    return !(*this == other);
+}
+
