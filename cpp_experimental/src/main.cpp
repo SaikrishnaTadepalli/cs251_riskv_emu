@@ -43,6 +43,8 @@ int main() {
     cpu1.set_reg(30, 0x124df345);
     cpu1.set_reg(31, 0xfff);
     cpu1.set_reg(1, 0xffffff);
+    cpu1.set_reg(4, -32);
+    cpu1.set_reg(5, 0x0);
 
     cpu1.set_mem(0, 0x124df34acefd125);
     cpu1.set_mem(8, 0x124df34acefd1252);
@@ -52,6 +54,7 @@ int main() {
     cpu1.set_mem(176, 0x124df34acefd125);
     cpu1.set_mem(216, 0x124df345);
     cpu1.set_mem(248, 0xfff);
+    cpu1.set_mem(248, -32);
 
     cpu1.print_hex();
 
