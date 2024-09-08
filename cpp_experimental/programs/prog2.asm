@@ -1,0 +1,5 @@
+ADD X4, XZR, XZR
+LDUR X5, [XZR, #5]
+ADDI X4, X4, #1
+SUBI X5, X5, #1
+CBNZ X5, [XZR, #-3]
