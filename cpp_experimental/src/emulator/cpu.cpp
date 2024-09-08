@@ -21,6 +21,7 @@ int64_t CPU::get_reg(int reg_index) {
 int64_t CPU::get_mem(int mem_index) {
     assert(mem_index >= 0);
     assert(mem_index < MEMSIZE - 7);
+    assert(mem_index % 8 == 0);
 
     int64_t val = 0;
     for (int i = 0; i < 8; i++) {
@@ -41,6 +42,7 @@ void CPU::set_reg(int reg_index, int64_t val) {
 void CPU::set_mem(int mem_index, int64_t val) {
     assert(mem_index >= 0);
     assert(mem_index < MEMSIZE - 7);
+    assert(mem_index % 8 == 0);
 
     for (int i = 7; i >= 0; i--) {
         uint8_t cur = val & 0xFF;

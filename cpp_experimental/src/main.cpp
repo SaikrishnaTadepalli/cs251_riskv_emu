@@ -30,9 +30,30 @@ int main() {
     lines.push_back("SUB X1, XZR, XZR");
     lines.push_back("ADDI X0, X31, #0");
 
-    CPU cppu1 = CPU("cpu1", lines);
+    CPU cpu1 = CPU("cpu1", lines);
 
-    cppu1.print_hex();
+    cpu1.print_hex();
+
+    cpu1.set_reg(0, 0x124df34acefd125);
+    cpu1.set_reg(1, 0x124df34acefd1252);
+    cpu1.set_reg(10, 0x124dfefd125);
+    cpu1.set_reg(11, 0x12425);
+    cpu1.set_reg(21, 0x5);
+    cpu1.set_reg(25, 0x124df34acefd125);
+    cpu1.set_reg(30, 0x124df345);
+    cpu1.set_reg(31, 0xfff);
+    cpu1.set_reg(1, 0xffffff);
+
+    cpu1.set_mem(0, 0x124df34acefd125);
+    cpu1.set_mem(8, 0x124df34acefd1252);
+    cpu1.set_mem(32, 0x124dfefd125);
+    cpu1.set_mem(72, 0x12425);
+    cpu1.set_mem(120, 0x5);
+    cpu1.set_mem(176, 0x124df34acefd125);
+    cpu1.set_mem(216, 0x124df345);
+    cpu1.set_mem(248, 0xfff);
+
+    cpu1.print_hex();
 
     std::cout << "\n^^^=======================================^^^\n" << std::endl;
     return 0;
