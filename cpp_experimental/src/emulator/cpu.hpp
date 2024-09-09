@@ -33,6 +33,12 @@ public:
 
     bool operator==(const CPU& other) const;
     bool operator!=(const CPU& other) const;
+
+    Instr get_cur_instr();
+    void run_instr();
+    
+    void run();
+    void step();
 };
 
 #endif
