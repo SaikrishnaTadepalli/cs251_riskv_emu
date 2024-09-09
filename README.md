@@ -1,10 +1,3 @@
-New version in development here: https://github.com/SaikrishnaTadepalli/riskv_emu
-
-Will include:
-- Expanded ISA
-- Assembler
-- Pipelined Data Processing Mode
-
 # ARM Emulator
 
 This is a basic ARM emulator written in Python. It emulates a simple ARM single cycle data path.
