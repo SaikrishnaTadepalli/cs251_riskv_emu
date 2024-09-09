@@ -1,28 +1,35 @@
 #include <iostream>
-#include <string.h>
+#include <vector>
+#include <string>
+#include <fstream>
 
 #include "emulator/instr.hpp"
 #include "emulator/cpu.hpp"
 
-int main() {
+std::vector<std::string> read_file(const std::string &filename) {
+    std::ifstream file(filename);
+    
     std::vector<std::string> lines;
+    if (!file.is_open()) {
+        std::cerr << "Unable to open file: " << filename << std::endl;
+        return lines;
+    }
+    
+    std::string line;
+    while (std::getline(file, line)) {
+        lines.push_back(line);
+    }
 
-    lines.push_back("ADDI X3, XZR, #20");
-    lines.push_back("ADD X4, X3, X3");
-    lines.push_back("SUBI X5, X4, #12");
+    file.close();
 
-    CPU cpu1 = CPU("cpu1", lines);
+    return lines;
+}
+
+int main() {
+    std::vector<std::string> code1 = read_file("../programs/prog1.asm");
+
+    CPU cpu1 = CPU("cpu1", code1);
     cpu1.step();
-    // cpu1.print_hex();
-
-    // cpu1.run_instr();
-    // cpu1.print_hex();
-
-    // cpu1.run_instr();
-    // cpu1.print_hex();
-
-    // cpu1.run_instr();
-    // cpu1.print_hex();
 
     return 0;
 }

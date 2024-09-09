@@ -8,6 +8,8 @@ CPU::CPU(std::string id, std::vector<std::string> code) {
     for (auto line: code) {
         this->code.push_back(line);
     }
+
+    this->randomize_cpu();
 }
 
 int64_t CPU::get_reg(int reg_index) const {
@@ -131,6 +133,33 @@ bool CPU::operator!=(const CPU& other) const {
     return !(*this == other);
 }
 
+void CPU::randomize_registers() {
+    std::random_device rd;
+    std::mt19937_64 gen(rd());
+
+    for (int i = 0; i < 31; i++) {
+        std::uniform_int_distribution<int64_t> dist;
+        int64_t val = dist(gen);
+        this->set_reg(i, val);
+    }
+}
+
+void CPU::randomize_dmem() {
+    std::random_device rd;
+    std::mt19937_64 gen(rd());
+
+    for (int i = 0; i < MEMSIZE; i+=8) {
+        std::uniform_int_distribution<int64_t> dist;
+        int64_t val = dist(gen);
+        this->set_mem(i, val);
+    }
+}
+
+void CPU::randomize_cpu() {
+    this->randomize_registers();
+    this->randomize_dmem();
+}
+
 Instr CPU::get_cur_instr() {
     int i = (this->pc / 4);
     assert(i < int(this->code.size()));
@@ -225,7 +254,7 @@ void CPU::run() {
 void CPU::step() {
     std::cout << "Executing " << std::setw(66) << std::setfill('=') << "" << std::endl << std::endl;
     std::cout << "Initial State: " << std::endl << std::endl;
-    
+
     this->print_hex();
     while (this->pc < uint32_t(this->code.size()) * 4) {
         std::cout << "('enter' to continue)" << std::endl;

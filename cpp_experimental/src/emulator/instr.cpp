@@ -38,7 +38,7 @@ Instr::Instr(std::string instr) {
 
     while (iss >> token) {
         if (token == "ZR") {
-            this->args.push_back(0);
+            this->args.push_back(31);
         } else if (token == " " or token == "") {
             std::cerr << "SOMETHING WRONG" << std::endl;
         } else {

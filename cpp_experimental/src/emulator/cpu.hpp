@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <bitset>
 #include <cassert>
+#include <random>
 
 #define MEMSIZE 256
 
@@ -34,9 +35,13 @@ public:
     bool operator==(const CPU& other) const;
     bool operator!=(const CPU& other) const;
 
+    void randomize_registers();
+    void randomize_dmem();
+    void randomize_cpu();
+
     Instr get_cur_instr();
     void run_instr();
-    
+
     void run();
     void step();
 };
