@@ -66,6 +66,12 @@ std::string _formatted_hex(int64_t num) {
     return formattedString;
 }
 
+std::string _formatted_dec (int64_t num) {
+    std::string s = std::to_string(num);
+    while (s.length() < 20) { s = " " + s; }
+    return s;
+}
+
 void CPU::print_hex() {
     int prefix_len = ("CPU ID: " + this->id + " ").size();
     std::cout 
@@ -108,7 +114,52 @@ void CPU::print_hex() {
 }
 
 void CPU::print_dec() {
-    assert(false);
+    int prefix_len = ("CPU ID: " + this->id + " ").size();
+    std::cout 
+        << "CPU ID: " << this->id << " " 
+        << std::setw(76 - prefix_len) << std::setfill('-') << ""
+        << std::endl << std::endl;
+
+    std::cout << "PC = " << this->pc << std::endl;
+
+    std::cout << std::endl << "Registers:" << std::endl;
+    for (int i = 0; i < 16; i++) {
+        std::cout << "\t";
+        if (i <= 9) { std::cout << " "; }
+        std::cout 
+            << "X" << i << ": " << _formatted_dec(this->registers[i])
+            << "\t||\t"
+            << "X" << (i + 16) << ": " << _formatted_dec(this->registers[i + 16])
+            << std::endl;
+    }
+
+    std::cout << std::endl << "Data Memory:" << std::endl;
+    for (int i = 0; i < (MEMSIZE / 2); i += 8) {
+        int64_t num1 = this->get_mem(i);
+        int64_t num2 = this->get_mem(MEMSIZE / 2 + i);
+
+        std::cout << "\t";
+
+        if (i <= 9) { std::cout << "  "; }
+        else if (i <= 99) { std::cout << " "; }
+
+        std::cout 
+            << i << ": " << _formatted_dec(num1)
+            << "\t||\t"
+            << (MEMSIZE / 2 + i) << ": " << _formatted_dec(num2)
+            << std::endl;
+    }
+
+    std::cout << std::endl << std::setw(76) << std::setfill('-') << "" << std::endl << std::endl;
+}
+
+void CPU::set_print_mode(CPU::PrintMode new_mode) {
+    this->print_mode = new_mode;
+}
+
+void CPU::print() {
+    if (this->print_mode == CPU::PrintMode::DEC) { this->print_dec();} 
+    else { this->print_hex(); }
 }
 
 bool _reg_eq(const CPU &cpu1, const CPU &cpu2) {
@@ -255,7 +306,7 @@ void CPU::step() {
     std::cout << "Executing " << std::setw(66) << std::setfill('=') << "" << std::endl << std::endl;
     std::cout << "Initial State: " << std::endl << std::endl;
 
-    this->print_hex();
+    this->print();
     while (this->pc < uint32_t(this->code.size()) * 4) {
         std::cout << "('enter' to continue)" << std::endl;
         std::cin.get();
@@ -278,7 +329,7 @@ void CPU::step() {
         std::cout << std::endl;
 
         this->run_instr();
-        this->print_hex();
+        this->print();
     }
 
     std::cout << "Finished " << std::setw(67) << std::setfill('=') << "" << std::endl << std::endl;

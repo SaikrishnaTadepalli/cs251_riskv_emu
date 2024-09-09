@@ -29,31 +29,16 @@ int main() {
     std::vector<std::string> code1 = read_file("../programs/prog1.asm");
 
     CPU cpu1 = CPU("cpu1", code1);
+    
+    // cpu1.print_hex();
+    // cpu1.print_dec();
+
+    cpu1.set_print_mode(CPU::PrintMode::DEC);
+
     cpu1.step();
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

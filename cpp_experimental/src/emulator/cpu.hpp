@@ -15,11 +15,14 @@
 
 class CPU {
 public:
+    enum class PrintMode { HEX, DEC };
+
     std::string id;
     std::vector<std::string> code;
     uint32_t pc;
     int64_t registers[32] = { 0 };
     uint8_t data_mem[MEMSIZE] = { 0 };
+    PrintMode print_mode = PrintMode::DEC;
 
     CPU(std::string id, std::vector<std::string> code);
 
@@ -31,6 +34,8 @@ public:
 
     void print_hex();
     void print_dec();
+    void set_print_mode(PrintMode new_mode);
+    void print();
 
     bool operator==(const CPU& other) const;
     bool operator!=(const CPU& other) const;
