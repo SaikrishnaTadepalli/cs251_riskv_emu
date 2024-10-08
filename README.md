@@ -1,3 +1,9 @@
+### Comming soon
+
+- C++ Implementation with bindings in Python
+- Unified Data and Instruction Memory
+- Expanded ISA + WLP4(C) Compiler
+
 # ARM Emulator
 
 This is a basic ARM emulator written in Python. It emulates a simple ARM single cycle data path.
