@@ -5,9 +5,9 @@
 - Expanded ISA: Additional R & D type instructions.
 - Assembler + WLP4(C) Compiler
 
-# ARM Emulator
+# RISC-V Emulator
 
-This is a basic ARM emulator written in Python. It emulates a simple ARM single cycle data path.
+This is a basic RISC-V emulator written in Python. It emulates a single cycle data path system.
 
 ## Instructions and Restrictions
 
@@ -89,7 +89,7 @@ Basic Usage Example:
 from cpu import CPU
 
 code1 = [
-    # ... ARM Code here
+    # ... RISC-V Code here
     # (Array of strings, each string being 1 line of ARM code)
 ]
 
@@ -133,11 +133,11 @@ Basic Grading Example:
 from cpu import CPU
 
 code1 = [
-    # ... ARM Code here
+    # ... RISC-V Code here
 ]
 
 code2 = [
-    # ... ARM Code here
+    # ... RISC-V Code here
 ]
 
 cpu1 = CPU('Solution', code1)
