@@ -85,7 +85,7 @@ This is a basic ARM emulator written in Python. It emulates a simple ARM single 
 
 Basic Usage Example:
 
-```
+```python
 from cpu import CPU
 
 code1 = [
@@ -129,7 +129,7 @@ assert(cpu2.get_double_word(56) == 15) # [56] should contain value 15
 
 Basic Grading Example:
 
-```
+```python
 from cpu import CPU
 
 code1 = [
@@ -165,7 +165,7 @@ Instantiates a CPU object. By default, initializes the CPU to random values. Thi
 
 Example1:
 
-```
+```python
 code = [
     "ADDI X2,X12,#16",
     "STUR X2, [X1, #5]",
@@ -176,7 +176,7 @@ cpu1 = CPU("first cpu", code)
 
 Example2:
 
-```
+```python
 code = [
     "ADDI X2,X12,#16",
     "STUR X2, [X1, #5]",
@@ -204,7 +204,7 @@ Executes the program in it's entirety.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first cpu", code)
 
 cpu1.run()
@@ -216,7 +216,7 @@ Steps through every instruction of the program, printing the state every time.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first cpu", code)
 
 cpu1.step()
@@ -231,7 +231,7 @@ Returns `True` if two CPU objects are equal, else `False`. Two CPUs are equal if
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 cpu1.run()
 
@@ -253,7 +253,7 @@ Prints the state of the CPU.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 cpu1.run()
 
@@ -273,7 +273,7 @@ Writes the state of the CPU to a file.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 cpu1.run()
 
@@ -288,7 +288,7 @@ Returns the value in a register.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 cpu1.run()
 
@@ -304,7 +304,7 @@ Sets the value in a register.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 
 cpu1.set_reg_value('X1', 100) # Setting 'X1' to 100 here
@@ -322,7 +322,7 @@ Gets the double-word value at a memory index. Returns a 64-bit value from `mem[m
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 cpu1.run()
 
@@ -339,7 +339,7 @@ Sets the double word value starting at a memory index.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 
 cpu1.set_double_word(24, 150) # Setting mem[24] to 150 here
@@ -359,7 +359,7 @@ Randomizes the values in the registers and data memory within a CPU.
 
 Example:
 
-```
+```python
 cpu1 = CPU("first", code1)
 
 cpu1.randomize_cpu() # Randomizing here
