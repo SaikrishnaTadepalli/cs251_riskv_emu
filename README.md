@@ -85,7 +85,7 @@ This is a basic ARM emulator written in Python. It emulates a simple ARM single 
 
 Basic Usage Example:
 
-```
+```python3
 from cpu import CPU
 
 code1 = [
