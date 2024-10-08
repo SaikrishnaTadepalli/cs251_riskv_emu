@@ -1,8 +1,9 @@
 ### Comming soon
 
 - C++ Implementation with bindings in Python
-- Unified Data and Instruction Memory
-- Expanded ISA + WLP4(C) Compiler
+- Expanded Architecture: Unified Data and Instruction Memory. L1, L2, L3 caching.
+- Expanded ISA: Additional R & D type instructions.
+- Assembler + WLP4(C) Compiler
 
 # ARM Emulator
 
