@@ -86,8 +86,8 @@ void Memory::randomize() {
 
     // THERE SHOULD BE A SYSTEM CALL FOR THIS.
     // '/dev/urandom' generates random bytes
-    // We should be able to use this to generate X bytes of random data
-    //  and read it directly into the emulator's main-memory
+    // We should be able to read X bytes from this file to fill 
+    //  the emulator's main-memory with random data
     // FIGURE OUT AN APPROACH SIMILAR TO THE ONE BELOW 
     //  (not compiling because 'getrandom' not found on MacOS)
 
