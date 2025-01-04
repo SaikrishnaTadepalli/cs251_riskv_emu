@@ -74,27 +74,14 @@ void Memory::set_double_word(uint byte_index, uint64_t val) {
 }
 
 void Memory::randomize() {
-    std::random_device rd;
-    std::mt19937_64 gen(rd());
-
-    for (int mem_addr = 0; mem_addr < MEM_SIZE; mem_addr+=8) {
-        std::uniform_int_distribution<int64_t> dist;
-        int64_t val = dist(gen);
-        this->set_double_word(mem_addr, val);
+    /*
+        - '/dev/urandom' generates random data
+        - reading 'MEM_SIZE' bytes from this file into 
+            the emulator's main-memory
+        - Should work on Linux and MacOS
+    */
+    std::ifstream urandom("/dev/urandom", std::ios::binary);
+    if (!urandom.read(reinterpret_cast<char*>(this->memory), MEM_SIZE)) {
+        perror("Error in Randomizing Memory.");  // Throw Exception
     }
-
-
-    // THERE SHOULD BE A SYSTEM CALL FOR THIS.
-    // '/dev/urandom' generates random bytes
-    // We should be able to read X bytes from this file to fill 
-    //  the emulator's main-memory with random data
-    // FIGURE OUT AN APPROACH SIMILAR TO THE ONE BELOW 
-    //  (not compiling because 'getrandom' not found on MacOS)
-
-
-    // Use 'getrandom' call to fill the array with random values
-    // ssize_t result = getrandom(this->memory, MEM_SIZE, 0);
-    // if (result == -1) {
-    //     perror("Error in 'getrandom' call.");  // Handle error
-    // }
 }

@@ -6,6 +6,8 @@
 #include <random>
 #include <sys/random.h>
 #include <unistd.h>
+#include <fstream>
+#include <stdexcept>
 
 // in Bytes
 #define MEM_SIZE 1024
